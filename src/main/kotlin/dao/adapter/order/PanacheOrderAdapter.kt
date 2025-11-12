@@ -4,6 +4,7 @@ import dao.entity.Order
 import dto.CustomerDto
 import dto.OrderDto
 import dto.OrderRequest
+import dto.toOrderDetailDto
 import jakarta.enterprise.context.ApplicationScoped
 import java.time.Instant
 import java.util.UUID
@@ -16,14 +17,16 @@ class PanacheOrderAdapter : OrderAdapter<Order>() {
             CustomerDto(order.customer.id, order.customer.nickname, order.customer.phoneNumber),
             order.paymentStatus,
             order.orderStatus,
-            order.created
+            order.created,
+        order.details.map { it.toOrderDetailDto() }
         )
     }
 
-    override fun fromOrderRequest(dto: OrderRequest): Order {
+    override fun fromOrderRequest(orderRequest: OrderRequest, id: UUID, customerId: UUID): Order {
         val order = Order()
 
-        order.id = UUID.randomUUID()
+        order.id = id
+        order.customerId = customerId
         order.paymentStatus = PaymentStatus.PENDING
         order.orderStatus = OrderStatus.PENDING
         order.created = Instant.now()

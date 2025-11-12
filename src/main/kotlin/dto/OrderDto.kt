@@ -10,5 +10,6 @@ data class OrderDto(
     val customer: CustomerDto,
     val paymentStatus: PaymentStatus,
     val orderStatus: OrderStatus,
-    val created: Instant
+    val created: Instant,
+    val details: List<OrderDetailDto>
 )

@@ -10,8 +10,8 @@ import java.util.UUID
 
 @ApplicationScoped
 class PanacheProductRepository(private val adapter: ProductAdapter<Product>): PanacheRepository<Product>, ProductRepository {
-    override fun insertProduct(product: ProductRequest) {
-        persist(adapter.fromOrderRequest(product))
+    override fun insertProduct(product: ProductRequest, id: UUID) {
+        persist(adapter.fromOrderRequest(product, id))
     }
 
     override fun getProducts(): List<ProductDto> {

@@ -17,10 +17,10 @@ class PanacheCustomerAdapter : CustomerAdapter<Customer>() {
         )
     }
 
-    override fun fromCustomerRequest(customerRequest: CustomerRequest): Customer {
+    override fun fromCustomerRequest(customerRequest: CustomerRequest, id: UUID): Customer {
         val customer = Customer()
 
-        customer.id = UUID.randomUUID()
+        customer.id = id
         customer.nickname = customerRequest.nickname
         customer.phoneNumber = customerRequest.phoneNumber
 

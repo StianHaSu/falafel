@@ -1,6 +1,6 @@
 package dto
 
 data class OrderRequest(
-    val order: String,
-    val customer: CustomerDto
+    val customer: CustomerRequest,
+    val orderDetails: List<OrderDetailRequest>
 )

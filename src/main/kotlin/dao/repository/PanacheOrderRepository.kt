@@ -11,12 +11,16 @@ import java.util.UUID
 @ApplicationScoped
 class PanacheOrderRepository(private val adapter: OrderAdapter<Order>) : PanacheRepository<Order>, OrderRepository {
 
-    override fun insertOrder(order: OrderRequest) {
-        persist(adapter.fromOrderRequest(order))
+    override fun insertOrder(order: OrderRequest, id: UUID, customerId: UUID) {
+        persist(adapter.fromOrderRequest(order, id, customerId))
     }
 
     override fun getOrderById(orderId: UUID): OrderDto? {
-        return find("id = ?1", orderId)
-            .firstResult()?.let { adapter.toOrderDto(it) }
+        return find(
+            "select distinct o from orders o " +
+                    "left join fetch o.details " +
+                    "where o.id = ?1",
+            orderId
+        ).firstResult()?.let { adapter.toOrderDto(it) }
     }
 }

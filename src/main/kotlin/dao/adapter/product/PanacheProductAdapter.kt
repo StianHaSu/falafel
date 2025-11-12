@@ -10,10 +10,10 @@ import java.util.UUID
 
 @ApplicationScoped
 class PanacheProductAdapter : ProductAdapter<Product>() {
-    override fun fromOrderRequest(productRequest: ProductRequest): Product {
+    override fun fromOrderRequest(productRequest: ProductRequest, id: UUID): Product {
         val product = Product()
 
-        product.id = UUID.randomUUID()
+        product.id = id
         product.name = productRequest.productName
         product.description = productRequest.productDescription
         product.price = BigDecimal.valueOf(productRequest.productPrice)

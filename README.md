@@ -1,61 +1,18 @@
 # falafel
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Falafel is supposed to be a slightly opinionated open source template for small restaurant businesses/food trucks and such.  
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+The end goal is to create a template for ordering products from your phone, or a store tablet, like they have at places  
+like Mc. Donald's, Los Tacos etc. 
 
-## Running the application in dev mode
+The name and idea comes from the fact that my favorite falafel place (Jamal's Falafel) does not have this feature,  
+and it would be cool to maybe enable some smaller businesses to be able to offer this feature as well.
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./gradlew quarkusDev
-```
+***Early stage development, started 12.11.25***
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+## Frontend
+I will also most likely create a frontend as well, possibly a demo project.
 
-## Packaging and running the application
-
-The application can be packaged using:
-```shell script
-./gradlew build
-```
-It produces the `quarkus-run.jar` file in the `build/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `build/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar build/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./gradlew build -Dquarkus.package.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./gradlew build -Dquarkus.package.type=native
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./build/falafel-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
-
-## Related Guides
-
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it
-- Kotlin ([guide](https://quarkus.io/guides/kotlin)): Write your services in Kotlin
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+## Application design  
+As I usually do with my personal projects, I like to be a bit overkill with my design patterns (because its fun).  
+This time I am playing around with some adapter patterns and such.

@@ -6,7 +6,7 @@ import jakarta.persistence.Table
 import java.util.UUID
 
 
-@Entity
+@Entity(name = "customers")
 @Table(name = "customers")
 class Customer {
     @Id

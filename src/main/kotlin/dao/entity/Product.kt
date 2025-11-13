@@ -6,7 +6,7 @@ import jakarta.persistence.Table
 import java.math.BigDecimal
 import java.util.UUID
 
-@Entity
+@Entity(name = "products")
 @Table(name = "products")
 class Product {
     @Id

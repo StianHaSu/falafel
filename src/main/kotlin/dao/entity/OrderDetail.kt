@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
 import java.util.UUID
 
-@Entity
+@Entity(name = "order_details")
 @Table(name = "order_details")
 @IdClass(OrderDetailKey::class)
 class OrderDetail {

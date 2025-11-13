@@ -16,7 +16,7 @@ import jakarta.persistence.Table
 import java.time.Instant
 import java.util.UUID
 
-@Entity
+@Entity(name = "orders")
 @Table(name = "orders")
 class Order {
     @Id

@@ -23,4 +23,9 @@ class PanacheOrderRepository(private val adapter: OrderAdapter<Order>) : Panache
             orderId
         ).firstResult()?.let { adapter.toOrderDto(it) }
     }
+
+    override fun getAllOrders(): List<OrderDto> {
+        return list("select distinct o from orders o " +
+                "left join fetch o.details ").map { adapter.toOrderDto(it) }
+    }
 }

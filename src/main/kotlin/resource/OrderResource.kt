@@ -18,6 +18,10 @@ class OrderResource(private val orderService: OrderService) {
     fun createOrder(orderRequest: OrderRequest): UUID = orderService.createOrderForCustomer(orderRequest)
 
     @GET
+    fun getAllOrders(): List<OrderDto> = orderService.getAllOrders()
+
+    @GET
     @Path("/{orderId}")
     fun getOrderById(@PathParam("orderId") orderId: UUID): OrderDto = orderService.getOrderById(orderId)
+
 }

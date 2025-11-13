@@ -22,6 +22,8 @@ class OrderService(
     fun getOrderById(id: UUID): OrderDto = orderRepository.getOrderById(id)
         ?.takeIf { true } ?: throw NotFoundException()
 
+    fun getAllOrders() = orderRepository.getAllOrders()
+
     private fun createOrderWithIds(order: OrderRequest, orderId: UUID, customerId: UUID): UUID =
         customerRepository.insertCustomer(order.customer, customerId)
             .also { orderRepository.insertOrder(order, orderId, customerId) }

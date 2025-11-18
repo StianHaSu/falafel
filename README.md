@@ -2,8 +2,7 @@
 
 Falafel is supposed to be a slightly opinionated open source template for small restaurant businesses/food trucks and such.  
 
-The end goal is to create a template for ordering products from your phone, or a store tablet, like they have at places  
-like Mc. Donald's, Los Tacos etc. 
+The end goal is to create a template for ordering products from your phone, or a store tablet, like they have at places like Mc. Donald's, Los Tacos etc. 
 
 The name and idea comes from the fact that my favorite falafel place (Jamal's Falafel) does not have this feature,  
 and it would be cool to maybe enable some smaller businesses to be able to offer this feature as well.

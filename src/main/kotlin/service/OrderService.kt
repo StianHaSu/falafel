@@ -5,6 +5,7 @@ import dao.repository.OrderDetailRepository
 import dao.repository.OrderRepository
 import dto.internal.OrderDto
 import dto.request.OrderRequest
+import dto.request.PatchOrderRequest
 import dto.response.OrderResponse
 import dto.toOrderResponse
 import jakarta.enterprise.context.ApplicationScoped
@@ -32,4 +33,11 @@ class OrderService(
             .also { orderRepository.insertOrder(order, orderId, customerId) }
             .also { orderDetailRepository.insertOrderDetails(order.orderDetails, orderId) }
             .let { orderId }
+
+    fun updateOrder(id: UUID, orderPatch: PatchOrderRequest) =
+            orderPatch.orderStatus
+                ?.let { orderStatus -> orderRepository.setOrderStatus(id, orderStatus) }
+                .also { orderPatch.paymentStatus
+                    ?.let { paymentStatus -> orderRepository.setPaymentStatus(id, paymentStatus) }
+                }
 }

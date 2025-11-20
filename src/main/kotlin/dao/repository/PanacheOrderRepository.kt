@@ -1,5 +1,7 @@
 package dao.repository
 
+import OrderStatus
+import PaymentStatus
 import dao.adapter.order.OrderAdapter
 import dao.entity.Order
 import dto.internal.OrderDto
@@ -27,5 +29,13 @@ class PanacheOrderRepository(private val adapter: OrderAdapter<Order>) : Panache
     override fun getAllOrders(): List<OrderDto> {
         return list("select distinct o from orders o " +
                 "left join fetch o.details ").map { adapter.toOrderDto(it) }
+    }
+
+    override fun setOrderStatus(id: UUID, orderStatus: OrderStatus) {
+        update("orderStatus = ?1 where id = ?2", orderStatus, id)
+    }
+
+    override fun setPaymentStatus(id: UUID, paymentStatus: PaymentStatus) {
+        update("paymentStatus = ?1 where id = ?2", paymentStatus, id)
     }
 }

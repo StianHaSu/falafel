@@ -2,9 +2,11 @@ package resource
 
 import dto.internal.OrderDto
 import dto.request.OrderRequest
+import dto.request.PatchOrderRequest
 import dto.response.OrderResponse
 import jakarta.transaction.Transactional
 import jakarta.ws.rs.GET
+import jakarta.ws.rs.PATCH
 import jakarta.ws.rs.POST
 import jakarta.ws.rs.Path
 import jakarta.ws.rs.PathParam
@@ -25,4 +27,8 @@ class OrderResource(private val orderService: OrderService) {
     @Path("/{orderId}")
     fun getOrderById(@PathParam("orderId") orderId: UUID): OrderResponse = orderService.getOrderById(orderId)
 
+    @PATCH
+    @Path("/{orderId}")
+    fun updateOrder(orderUpdate: PatchOrderRequest, @PathParam("orderId") orderId: UUID) =
+        orderService.updateOrder(orderId, orderUpdate)
 }

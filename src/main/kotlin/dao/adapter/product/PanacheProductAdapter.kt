@@ -1,9 +1,9 @@
 package dao.adapter.product
 
 import dao.entity.Product
-import dto.OrderDto
-import dto.ProductDto
-import dto.ProductRequest
+import dto.internal.OrderDto
+import dto.internal.ProductDto
+import dto.request.ProductRequest
 import jakarta.enterprise.context.ApplicationScoped
 import java.math.BigDecimal
 import java.util.UUID

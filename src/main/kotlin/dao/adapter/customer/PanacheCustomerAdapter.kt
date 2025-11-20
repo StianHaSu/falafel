@@ -1,8 +1,8 @@
 package dao.adapter.customer
 
 import dao.entity.Customer
-import dto.CustomerDto
-import dto.CustomerRequest
+import dto.internal.CustomerDto
+import dto.request.CustomerRequest
 import jakarta.enterprise.context.ApplicationScoped
 import java.util.UUID
 

@@ -2,7 +2,7 @@ package dao.repository
 
 import dao.adapter.customer.CustomerAdapter
 import dao.entity.Customer
-import dto.CustomerRequest
+import dto.request.CustomerRequest
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepository
 import jakarta.enterprise.context.ApplicationScoped
 import java.util.UUID

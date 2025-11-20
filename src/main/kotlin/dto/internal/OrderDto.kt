@@ -1,4 +1,4 @@
-package dto
+package dto.internal
 
 import OrderStatus
 import PaymentStatus

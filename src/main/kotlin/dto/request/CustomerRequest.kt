@@ -1,4 +1,4 @@
-package dto
+package dto.request
 
 data class CustomerRequest(
     val nickname: String,

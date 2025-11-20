@@ -2,7 +2,7 @@ package dao.repository
 
 import dao.adapter.order_detail.OrderDetailAdapter
 import dao.entity.OrderDetail
-import dto.OrderDetailRequest
+import dto.request.OrderDetailRequest
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepository
 import jakarta.enterprise.context.ApplicationScoped
 import java.util.UUID

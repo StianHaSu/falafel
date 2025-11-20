@@ -1,7 +1,7 @@
 package dao.adapter.product
 
-import dto.ProductDto
-import dto.ProductRequest
+import dto.internal.ProductDto
+import dto.request.ProductRequest
 import java.util.UUID
 
 abstract class ProductAdapter<T> {

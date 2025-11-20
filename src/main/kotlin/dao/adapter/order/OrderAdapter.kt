@@ -1,7 +1,7 @@
 package dao.adapter.order
 
-import dto.OrderDto
-import dto.OrderRequest
+import dto.internal.OrderDto
+import dto.request.OrderRequest
 import java.util.UUID
 
 abstract class OrderAdapter<T> {

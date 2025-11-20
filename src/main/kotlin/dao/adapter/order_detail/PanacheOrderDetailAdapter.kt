@@ -1,7 +1,7 @@
 package dao.adapter.order_detail
 
 import dao.entity.OrderDetail
-import dto.OrderDetailRequest
+import dto.request.OrderDetailRequest
 import jakarta.enterprise.context.ApplicationScoped
 import java.util.UUID
 

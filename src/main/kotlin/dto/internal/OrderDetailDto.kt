@@ -1,4 +1,4 @@
-package dto
+package dto.internal
 
 import java.util.UUID
 
@@ -7,4 +7,5 @@ data class OrderDetailDto(
     val productName: String,
     val orderId: UUID,
     val quantity: Int,
+    val price: Double,
 )

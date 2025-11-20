@@ -1,6 +1,6 @@
 package dao.repository
 
-import dto.OrderDetailRequest
+import dto.request.OrderDetailRequest
 import java.util.UUID
 
 interface OrderDetailRepository {

@@ -1,7 +1,7 @@
 package dao.adapter.customer
 
-import dto.CustomerDto
-import dto.CustomerRequest
+import dto.internal.CustomerDto
+import dto.request.CustomerRequest
 import java.util.UUID
 
 abstract class CustomerAdapter<T> {

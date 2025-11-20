@@ -1,9 +1,9 @@
 package dao.adapter.order
 
 import dao.entity.Order
-import dto.CustomerDto
-import dto.OrderDto
-import dto.OrderRequest
+import dto.internal.CustomerDto
+import dto.internal.OrderDto
+import dto.request.OrderRequest
 import dto.toOrderDetailDto
 import jakarta.enterprise.context.ApplicationScoped
 import java.time.Instant

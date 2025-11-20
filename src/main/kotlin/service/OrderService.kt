@@ -3,8 +3,10 @@ package service
 import dao.repository.CustomerRepository
 import dao.repository.OrderDetailRepository
 import dao.repository.OrderRepository
-import dto.OrderDto
-import dto.OrderRequest
+import dto.internal.OrderDto
+import dto.request.OrderRequest
+import dto.response.OrderResponse
+import dto.toOrderResponse
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.ws.rs.NotFoundException
 import java.util.UUID
@@ -19,8 +21,9 @@ class OrderService(
     fun createOrderForCustomer(order: OrderRequest): UUID =
         createOrderWithIds(order, UUID.randomUUID(), UUID.randomUUID())
 
-    fun getOrderById(id: UUID): OrderDto = orderRepository.getOrderById(id)
-        ?.takeIf { true } ?: throw NotFoundException()
+    fun getOrderById(id: UUID): OrderResponse = orderRepository.getOrderById(id)
+        ?.toOrderResponse() ?: throw NotFoundException()
+
 
     fun getAllOrders() = orderRepository.getAllOrders()
 

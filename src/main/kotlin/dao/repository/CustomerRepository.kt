@@ -1,6 +1,6 @@
 package dao.repository
 
-import dto.CustomerRequest
+import dto.request.CustomerRequest
 import java.util.UUID
 
 interface CustomerRepository {

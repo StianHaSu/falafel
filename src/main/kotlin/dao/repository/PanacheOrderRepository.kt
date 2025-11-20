@@ -2,8 +2,8 @@ package dao.repository
 
 import dao.adapter.order.OrderAdapter
 import dao.entity.Order
-import dto.OrderDto
-import dto.OrderRequest
+import dto.internal.OrderDto
+import dto.request.OrderRequest
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepository
 import jakarta.enterprise.context.ApplicationScoped
 import java.util.UUID

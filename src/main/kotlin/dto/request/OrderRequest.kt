@@ -1,4 +1,4 @@
-package dto
+package dto.request
 
 data class OrderRequest(
     val customer: CustomerRequest,

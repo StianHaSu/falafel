@@ -1,6 +1,6 @@
 package dao.adapter.order_detail
 
-import dto.OrderDetailRequest
+import dto.request.OrderDetailRequest
 import java.util.UUID
 
 abstract class OrderDetailAdapter<T> {

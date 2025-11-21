@@ -3,7 +3,7 @@ package service
 import dao.repository.CustomerRepository
 import dao.repository.OrderDetailRepository
 import dao.repository.OrderRepository
-import dto.internal.OrderDto
+import dto.request.OrderFilter
 import dto.request.OrderRequest
 import dto.request.PatchOrderRequest
 import dto.response.OrderResponse
@@ -26,7 +26,7 @@ class OrderService(
         ?.toOrderResponse() ?: throw NotFoundException()
 
 
-    fun getAllOrders() = orderRepository.getAllOrders()
+    fun getOrders(orderFiler: OrderFilter) = orderRepository.getOrders(orderFiler)
 
     private fun createOrderWithIds(order: OrderRequest, orderId: UUID, customerId: UUID): UUID =
         customerRepository.insertCustomer(order.customer, customerId)

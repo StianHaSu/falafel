@@ -3,6 +3,7 @@ package dao.repository
 import OrderStatus
 import PaymentStatus
 import dto.internal.OrderDto
+import dto.request.OrderFilter
 import dto.request.OrderRequest
 import java.util.UUID
 
@@ -11,7 +12,7 @@ interface OrderRepository {
 
     fun getOrderById(orderId: UUID): OrderDto?
 
-    fun getAllOrders(): List<OrderDto>
+    fun getOrders(filter: OrderFilter): List<OrderDto>
 
     fun setOrderStatus(id: UUID, orderStatus: OrderStatus)
 

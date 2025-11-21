@@ -5,6 +5,7 @@ import dto.request.OrderRequest
 import dto.request.PatchOrderRequest
 import dto.response.OrderResponse
 import jakarta.transaction.Transactional
+import jakarta.validation.Valid
 import jakarta.ws.rs.GET
 import jakarta.ws.rs.PATCH
 import jakarta.ws.rs.POST
@@ -18,7 +19,7 @@ class OrderResource(private val orderService: OrderService) {
 
     @POST
     @Transactional
-    fun createOrder(orderRequest: OrderRequest): UUID = orderService.createOrderForCustomer(orderRequest)
+    fun createOrder(@Valid orderRequest: OrderRequest): UUID = orderService.createOrderForCustomer(orderRequest)
 
     @GET
     fun getAllOrders(): List<OrderDto> = orderService.getAllOrders()

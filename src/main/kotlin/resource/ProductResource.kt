@@ -3,10 +3,12 @@ package resource
 import dto.internal.ProductDto
 import dto.request.ProductRequest
 import jakarta.transaction.Transactional
+import jakarta.validation.Valid
 import jakarta.ws.rs.DELETE
 import jakarta.ws.rs.GET
 import jakarta.ws.rs.POST
 import jakarta.ws.rs.Path
+import jakarta.ws.rs.PathParam
 import service.ProductService
 import java.util.UUID
 
@@ -15,11 +17,13 @@ class ProductResource(private val productService: ProductService) {
 
     @POST
     @Transactional
-    fun createProduct(product: ProductRequest) = productService.createProduct(product)
+    fun createProduct(@Valid product: ProductRequest) = productService.createProduct(product)
 
     @GET
     fun getProducts(): List<ProductDto> = productService.getAllProducts()
 
     @DELETE
-    fun deleteProductById(id: UUID) = productService.deleteProduct(id)
+    @Transactional
+    @Path("/{productId}")
+    fun deleteProductById(@PathParam("productId") id: UUID) = productService.deleteProduct(id)
 }

@@ -28,9 +28,13 @@ class PanacheOrderRepository(private val adapter: OrderAdapter<Order>) : Panache
     }
 
     override fun getOrders(filter: OrderFilter): List<OrderDto> {
-        return applyFilterToQuery(
-            StringBuilder("select distinct o from orders o left join fetch o.details"), filter)
-            .let { query -> list(query.toString()).map { adapter.toOrderDto(it) }  }
+        return StringBuilder("select distinct o from orders o left join fetch o.details")
+            .let { query -> applyFilterToQuery(query, filter)
+                .let { params ->
+                    list(query.toString(), params).map { adapter.toOrderDto(it) }
+                }
+
+            }
     }
 
     override fun setOrderStatus(id: UUID, orderStatus: OrderStatus) {
@@ -41,26 +45,24 @@ class PanacheOrderRepository(private val adapter: OrderAdapter<Order>) : Panache
         update("paymentStatus = ?1 where id = ?2", paymentStatus, id)
     }
 
-    private fun applyFilterToQuery(query: StringBuilder, filter: OrderFilter): StringBuilder {
+    private fun applyFilterToQuery(query: StringBuilder, filter: OrderFilter): Map<String, Any> {
         return getMapOfStatements(filter)
             .takeIf { it.isNotEmpty() }
-            ?.let { statements -> applyStatements(query, statements, statements.keys.toList()) }
-            .let { query }
+            ?.also { statements -> applyStatements(query, statements.keys.toList()) }
+            .orEmpty()
     }
 
-    private fun applyStatements(query: StringBuilder, statements: Map<String, String>, statementKeys: List<String>) {
-        query.append(" where " + statementKeys[0] + " = " + statements[statementKeys[0]])
-            .also {
-                repeat(statementKeys.size - 1) {
-                    query.append(" and " + statementKeys[it + 1] + " = " + statements[statementKeys[it]])
-                }
-            }
+    private fun applyStatements(query: StringBuilder, statementKeys: List<String>) {
+        query.append(" where o." + statementKeys[0] + " = :" + statementKeys[0])
+        repeat(statementKeys.size - 1) {
+            query.append(" and o." + statementKeys[it + 1] + " = :" + statementKeys[it + 1])
+        }
     }
 
-    private fun getMapOfStatements(filter: OrderFilter): Map<String, String> =
-        mutableMapOf<String, String>()
+    private fun getMapOfStatements(filter: OrderFilter): Map<String, Any> =
+        mutableMapOf<String, Any>()
             .also { statements ->
-                filter.orderStatus?.let { orderStatus -> statements[":orderStatus"] = orderStatus.name }
-                filter.paymentStatus?.let { paymentStatus -> statements[":paymentStatus"] = paymentStatus.name }
+                filter.orderStatus?.let { orderStatus -> statements["orderStatus"] = orderStatus }
+                filter.paymentStatus?.let { paymentStatus -> statements["paymentStatus"] = paymentStatus }
             }
 }

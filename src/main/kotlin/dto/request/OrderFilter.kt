@@ -6,6 +6,6 @@ import jakarta.ws.rs.QueryParam
 
 
 data class OrderFilter(
-    @field:QueryParam("orderStatus") val orderStatus: OrderStatus?,
-    @field:QueryParam("paymentStatus") val paymentStatus: PaymentStatus?
+    @field:QueryParam("orderStatus") var orderStatus: OrderStatus? = null,
+    @field:QueryParam("paymentStatus") var paymentStatus: PaymentStatus? = null
 )

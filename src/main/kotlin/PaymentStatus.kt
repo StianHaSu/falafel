@@ -1,6 +1,6 @@
-enum class PaymentStatus {
-    PAYED,
-    PENDING,
-    CANCELLED,
-    DECLINED
+enum class PaymentStatus(val status: String) {
+    PAYED("PAYED"),
+    PENDING("PENDING"),
+    CANCELLED("CANCELLED"),
+    DECLINED("DECLINED")
 }

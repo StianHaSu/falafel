@@ -2,11 +2,14 @@ package resource
 
 import OrderStatus
 import PaymentStatus
+import auth.ProtectedEndpoint
+import auth.Roles
 import dto.internal.OrderDto
 import dto.request.OrderFilter
 import dto.request.OrderRequest
 import dto.request.PatchOrderRequest
 import dto.response.OrderResponse
+import io.quarkus.security.Authenticated
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import jakarta.ws.rs.BeanParam
@@ -38,6 +41,7 @@ class OrderResource(private val orderService: OrderService) {
     @PATCH
     @Transactional
     @Path("/{orderId}")
+    @ProtectedEndpoint(allowableRoles = [Roles.STORE_WORKER])
     fun updateOrder(orderUpdate: PatchOrderRequest, @PathParam("orderId") orderId: UUID) =
         orderService.updateOrder(orderId, orderUpdate)
 }

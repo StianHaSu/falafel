@@ -34,4 +34,8 @@ class PanacheProductRepository(private val adapter: ProductAdapter<Product>): Pa
     override fun updatePrice(id: UUID, price: Double) {
         update("price = ?1 where id = ?2", price, id)
     }
+
+    override fun updateDescription(id: UUID, newDescription: String) {
+        update("description = ?1 where id = ?2", newDescription, id)
+    }
 }

@@ -1,13 +1,10 @@
 package resource
 
-import Category
 import auth.ProtectedEndpoint
 import auth.Roles
-import com.arjuna.ats.arjuna.objectstore.StoreManager
 import dto.internal.ProductDto
 import dto.request.ProductPatchRequest
 import dto.request.ProductRequest
-import io.quarkus.security.Authenticated
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import jakarta.ws.rs.DELETE

@@ -3,9 +3,10 @@ package dto.request
 import Category
 
 data class ProductPatchRequest(
-    val categoryUpdates: CategoryPatchRequest?,
     val price: Double?,
-    val name: String?
+    val productName: String?,
+    val productDescription: String?,
+    val categoryUpdates: CategoryPatchRequest?,
 )
 
 data class CategoryPatchRequest(

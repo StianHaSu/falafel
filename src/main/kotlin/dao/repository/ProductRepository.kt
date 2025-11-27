@@ -16,4 +16,6 @@ interface ProductRepository {
     fun updateName(id: UUID, newName: String)
 
     fun updatePrice(id: UUID, price: Double)
+
+    fun updateDescription(id: UUID, newDescription: String)
 }

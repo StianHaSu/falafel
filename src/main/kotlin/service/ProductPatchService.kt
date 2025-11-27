@@ -14,12 +14,13 @@ class ProductPatchService(
 ) {
 
     fun applyPatch(productId: UUID, patch: ProductPatchRequest) {
-        patch.name?.let { name -> productRepository.updateName(productId, name) }
+        patch.productName?.let { name -> productRepository.updateName(productId, name) }
         patch.price?.let { price -> productRepository.updatePrice(productId, price) }
         patch.categoryUpdates?.let { categoryUpdates -> applyCategoryChanges(productId, categoryUpdates) }
+        patch.productDescription?.let { description -> productRepository.updateDescription(productId, description) }
     }
 
-    fun applyCategoryChanges(productId: UUID, categoryChanges: CategoryPatchRequest) {
+    private fun applyCategoryChanges(productId: UUID, categoryChanges: CategoryPatchRequest) {
         categoryChanges.add?.let { toAdd ->
             productCategoryRepository.addCategoriesToProduct(productId, toAdd)
         }

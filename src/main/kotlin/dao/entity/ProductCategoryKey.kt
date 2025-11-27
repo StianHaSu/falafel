@@ -1,5 +1,6 @@
 package dao.entity
 
+import Category
 import jakarta.persistence.Column
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -15,5 +16,5 @@ class ProductCategoryKey: Serializable {
     @Id
     @Column(name = "order_id")
     @Enumerated(EnumType.STRING)
-    lateinit var category: ProductCategory
+    lateinit var category: Category
 }

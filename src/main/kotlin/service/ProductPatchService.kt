@@ -15,7 +15,7 @@ class ProductPatchService(
 
     fun applyPatch(productId: UUID, patch: ProductPatchRequest) {
         patch.productName?.let { name -> productRepository.updateName(productId, name) }
-        patch.price?.let { price -> productRepository.updatePrice(productId, price) }
+        patch.productPrice?.let { price -> productRepository.updatePrice(productId, price) }
         patch.categoryUpdates?.let { categoryUpdates -> applyCategoryChanges(productId, categoryUpdates) }
         patch.productDescription?.let { description -> productRepository.updateDescription(productId, description) }
     }

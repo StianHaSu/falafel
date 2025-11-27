@@ -12,4 +12,8 @@ interface ProductRepository {
     fun getProductById(id: UUID): ProductDto?
 
     fun deleteProduct(id: UUID)
+
+    fun updateName(id: UUID, newName: String)
+
+    fun updatePrice(id: UUID, price: Double)
 }

@@ -26,4 +26,12 @@ class PanacheProductRepository(private val adapter: ProductAdapter<Product>): Pa
     override fun deleteProduct(id: UUID) {
         delete("id = ?1", id)
     }
+
+    override fun updateName(id: UUID, newName: String) {
+        update("name = ?1 where id = ?2", newName, id)
+    }
+
+    override fun updatePrice(id: UUID, price: Double) {
+        update("price = ?1 where id = ?2", price, id)
+    }
 }
